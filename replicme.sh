@@ -45,5 +45,5 @@ NODE_COUNT=$((NODE_COUNT+0))
 for (( i=0; i<$NODE_COUNT; i++ ))
 do
     read -p "Entrez le nom du Noeud :  $((i+1)): " NODE_NAME
-    pvesr create-local-job $((100 + $i)) $NODE_NAME --schedule "*/5" --rate 3
+    pvesr create-local-job 100-$i $NODE_NAME --schedule "*/5" --rate 3
 done
