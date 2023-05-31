@@ -34,13 +34,12 @@ for ((i=1; i<=NUM_NODES; i++)); do
     else
         echo "Error : probléme dans la créartion ZFS_STOCKAGE"
     fi
+done
+
 zpool create -f $STORAGE_NAME $DEVICE_NAME; zfs set sharenfs=on $STORAGE_NAME; pvesm add zfspool $STORAGE_NAME --pool $STORAGE_NAME --content images,rootdir
 
 if [ $? -eq 0 ]; then
         echo "    Stockage ZFS créé avec succès dans ce noeud "
     else
         echo "Error : probléme dans la créartion ZFS_STOCKAGE"
-    fi
- 
-
-done
+fi
