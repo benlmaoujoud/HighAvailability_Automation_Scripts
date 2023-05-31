@@ -14,27 +14,30 @@ echo "
 printf "${STOP}"
 
 
+
 read -p "Entrez le nom du groupe HA : " HA_GROUP
 while [[ -z "$HA_GROUP" ]]; do
     echo "Le nom du groupe HA ne peut pas être vide."
     read -p "Entrez le nom du groupe HA : " HA_GROUP
 done
 
-# Get the Container ID from the user
+read -p "Entrez le nom des noeuds (séparés par des virgules sans espaces) : " NODES
+while [[ -z "$NODES" ]]; do
+    echo "Le nom des noeuds ne peut pas être vide."
+    read -p "Entrez le nom des noeuds (séparés par des virgules sans espaces) : " NODES
+done
+
 read -p "Entrez l'ID du conteneur LXC : " CONTAINER_ID
 while [[ -z "$CONTAINER_ID" ]]; do
     echo "L'ID du conteneur ne peut pas être vide."
     read -p "Entrez l'ID du conteneur LXC : " CONTAINER_ID
 done
 
-
 echo "Création du groupe HA $HA_GROUP..."
-pvesh create /cluster/ha/groups --group "$HA_GROUP"
+pvesh create /cluster/ha/groups --group "$HA_GROUP" --nodes "$NODES"
 
-# Add the LXC container to the HA group
 echo "Ajout de la ressource vm:$CONTAINER_ID au groupe $HA_GROUP..."
-pvesh create /cluster/ha/resources --group "$HA_GROUP" --type lxc --sid "$CONTAINER_ID" --max-relocate 1 --priority 1
-
+pvesh create /cluster/ha/resources --group "$HA_GROUP" --type ct --sid "$CONTAINER_ID"
 
 echo "Vérification HA..."
 pvesh get /cluster/ha/groups/"$HA_GROUP"
