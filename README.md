@@ -1,17 +1,48 @@
 # HighAvailability_Automation_Scripts
-Cette répertoire GitHub contient une collection de scripts d'automatisation pour la configuration d'un environnement de haute disponibilité 
 
-## ssh_key_destribution.sh : Configuration de l'accès SSH sans mot de passe
-Ce script génère une nouvelle paire de clés SSH, copie la clé publique sur deux nœuds distants (pré-définis dans le script) pour permettre l'accès SSH sans mot de passe, et tente de se connecter à ces deux nœuds pour vérifier l'authentification.
-## create_cluster.sh : Création d'un cluster Proxmox
-Ce script crée un nouveau cluster Proxmox en demandant à l'utilisateur le nombre de nœuds, le nom du cluster, puis les noms et adresses IP de chaque nœud.
+Cette répertoire GitHub contient une collection de scripts d'automatisation pour la configuration d'un environnement de haute disponibilité
 
-## share_storage.sh : Création de stockage ZFS
 
-Ce script crée un stockage ZFS sur chaque nœud du cluster en demandant à l'utilisateur le nombre de nœuds, l'adresse IP, le nom du stockage, et le nom du périphérique de chaque nœud.
+![Alt text](aut.jpg?raw=true "Proxmox")
 
-## Prérequis :
+## Installation
 
-* Assurez-vous que le script est exécutable avec chmod a+x script3.sh.
-* Exécutez le script avec ./script3.sh.
-* Suivez les instructions à l'écran.
+
+
+```bash
+sudo apt-get update
+
+apt-get install git
+
+git clone https://github.com/benlmaoujoud/HighAvailability_Automation_Scripts
+
+cd HighAvailability_Automation_Scripts
+
+sudo chmod +x nom_script.sh
+```
+
+## Usage
+
+```bash
+# pour configurer l'accès entre les noeuds sans mot de passe
+sudo apt-get update
+sudo apt install openssh-server
+bash ssh_key_distribution.sh
+
+
+# pour crée un cluster sous proxmox 
+bash create_cluster.sh
+
+# crée une stockage partagé zfs
+bash share_storage.sh
+
+# install vm or container sous proxmox et puis réplique le vms vers les autres noeuds
+bash replicme.sh
+
+# pour configurer la haute disponibilité 
+bash configHA.sh
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
