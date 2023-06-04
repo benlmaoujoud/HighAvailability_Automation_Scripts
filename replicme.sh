@@ -26,7 +26,7 @@ if [ "$LXC_EXISTS" == "oui" ]; then
         exit 0
     fi
 fi
-
+pveam update
 echo "Liste des modèles LXC disponibles:"
 pveam available --section turnkeylinux | awk '{print $2}'
 
