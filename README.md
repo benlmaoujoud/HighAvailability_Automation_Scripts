@@ -10,7 +10,7 @@ Cette répertoire GitHub contient une collection de scripts d'automatisation pou
 
 
 ```bash
-sudo apt-get update
+apt-get update
 
 apt-get install git
 
@@ -18,15 +18,15 @@ git clone https://github.com/benlmaoujoud/HighAvailability_Automation_Scripts
 
 cd HighAvailability_Automation_Scripts
 
-sudo chmod +x nom_script.sh
+chmod +x nom_script.sh
 ```
 
 ## Usage
 
 ```bash
 # pour configurer l'accès entre les noeuds sans mot de passe
-sudo apt-get update
-sudo apt install openssh-server
+apt-get update
+apt install openssh-server
 bash ssh_key_distribution.sh
 
 
