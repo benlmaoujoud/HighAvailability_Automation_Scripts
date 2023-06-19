@@ -1,6 +1,6 @@
 # HighAvailability_Automation_Scripts
 
-Cette répertoire GitHub contient une collection de scripts d'automatisation pour la configuration d'un environnement de haute disponibilité
+Cette répertoire GitHub contient une collection de scripts d'automatisation pour la configuration d'un environnement de haute disponibilité sous proxmox
 
 
 ![Alt text](aut.jpg?raw=true "Proxmox")
